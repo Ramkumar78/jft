@@ -166,42 +166,45 @@ public class UserTest {
         assertEquals(11, num--);
         assertEquals(10, num);
     }
+
     @Test
-    public void booleanOperatorsExplored(){
-        assertTrue( 4 == 4 );
+    public void booleanOperatorsExplored() {
+        assertTrue(4 == 4);
         assertTrue(4 != 5);
         assertTrue(3 < 4);
         assertTrue(5 > 4);
-        assertTrue( 6 >= 6);
-        assertTrue( 7 >= 6);
-        assertTrue( 8 <= 8);
-        assertTrue( 8 <= 9);
+        assertTrue(6 >= 6);
+        assertTrue(7 >= 6);
+        assertTrue(8 <= 8);
+        assertTrue(8 <= 9);
         assertFalse(!true);
         boolean truthy = true;
         assertFalse(!truthy);
     }
 
     @Test
-    public void conditionalOperatorsExplored(){
-        assertTrue( true && true);
-        assertTrue( true || false);
-        assertTrue( false || true);
-        assertFalse( false || false);
-        assertFalse( false && true);
+    public void conditionalOperatorsExplored() {
+        assertTrue(true && true);
+        assertTrue(true || false);
+        assertTrue(false || true);
+        assertFalse(false || false);
+        assertFalse(false && true);
     }
+
     @Test
-    public void ternaryOperatorsExplored(){
+    public void ternaryOperatorsExplored() {
         int x;
-        x = 4>3 ? 2 : 1;
+        x = 4 > 3 ? 2 : 1;
         assertEquals(2, x);
-        assertTrue( 5>=4 ? true : false );
-        int i=1;
-        int j=6;
-        int y=i>j ? 7:9;
+        assertTrue(5 >= 4 ? true : false);
+        int i = 1;
+        int j = 6;
+        int y = i > j ? 7 : 9;
         System.out.println(y);
     }
+
     @Test
-    public void bitwiseOperatorsExplored(){
+    public void bitwiseOperatorsExplored() {
         assertEquals(0b0001,
                 0b1001 & 0b0101);
         assertEquals(0b1101,
@@ -212,13 +215,15 @@ public class UserTest {
         assertEquals("11111111111111111111111111111110",
                 Integer.toBinaryString(~x));
     }
+
     @Test
-    public void bitwiseOperator(){
-    System.out.println(4 ^ 5);
+    public void bitwiseOperator() {
+        System.out.println(4 ^ 5);
         System.out.println(~4);
     }
+
     @Test
-    public void bitwiseAssignmentOperatorsExplored(){
+    public void bitwiseAssignmentOperatorsExplored() {
         byte x = 0b0001;
         x &= 0b1011;
         System.out.println(x);
@@ -228,13 +233,54 @@ public class UserTest {
         x ^= 0b1110;
         assertEquals(0b0111, x);
     }
-    @Test
-    public void shiftoperator(){
 
-       int x=Integer.MIN_VALUE;
-        System.out.println((x/2)+1);
-        System.out.println(x>>>2);
+    @Test
+    public void shiftoperator() {
+
+        int x = Integer.MIN_VALUE;
+        System.out.println((x / 2) + 1);
+        System.out.println(x >>> 2);
 
     }
+
+    @Test
+    public void someStringMethods() {
+        String aString = "abcdef";
+        assertEquals(6, aString.length());
+        assertTrue(aString.compareToIgnoreCase("ABCDEF") == 0);
+        assertTrue(aString.contains("bcde"));
+        assertTrue(aString.startsWith("abc"));
+// string indexing starts at 0
+        assertEquals('c', aString.charAt(2));
+        assertEquals("ef", aString.substring(4));
+    }
+
+    @Test
+    public void moreTernary() {
+        String url = "http://eviltester.com";
+
+        url = url.startsWith("http") ? url : addHttp(url);
+    }
+
+    private String addHttp(String url) {
+        return "http://" + url;
+    }
+
+    @Test
+    public void catTest() {
+        int number_of_cats = 1;
+        assertEquals("1==cat", "cat", (number_of_cats == 1) ? "cat" : "cats");
+    }
+
+    @Test
+    public void ifstatementTest() {
+        int i = 5;
+        if (i >= 1) {
+            ++i;
+            System.out.println(++i);
+        }
+        assertEquals(7, i);
+    }
+
 }
 
