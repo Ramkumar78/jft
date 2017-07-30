@@ -166,42 +166,45 @@ public class UserTest {
         assertEquals(11, num--);
         assertEquals(10, num);
     }
+
     @Test
-    public void booleanOperatorsExplored(){
-        assertTrue( 4 == 4 );
+    public void booleanOperatorsExplored() {
+        assertTrue(4 == 4);
         assertTrue(4 != 5);
         assertTrue(3 < 4);
         assertTrue(5 > 4);
-        assertTrue( 6 >= 6);
-        assertTrue( 7 >= 6);
-        assertTrue( 8 <= 8);
-        assertTrue( 8 <= 9);
+        assertTrue(6 >= 6);
+        assertTrue(7 >= 6);
+        assertTrue(8 <= 8);
+        assertTrue(8 <= 9);
         assertFalse(!true);
         boolean truthy = true;
         assertFalse(!truthy);
     }
 
     @Test
-    public void conditionalOperatorsExplored(){
-        assertTrue( true && true);
-        assertTrue( true || false);
-        assertTrue( false || true);
-        assertFalse( false || false);
-        assertFalse( false && true);
+    public void conditionalOperatorsExplored() {
+        assertTrue(true && true);
+        assertTrue(true || false);
+        assertTrue(false || true);
+        assertFalse(false || false);
+        assertFalse(false && true);
     }
+
     @Test
-    public void ternaryOperatorsExplored(){
+    public void ternaryOperatorsExplored() {
         int x;
-        x = 4>3 ? 2 : 1;
+        x = 4 > 3 ? 2 : 1;
         assertEquals(2, x);
-        assertTrue( 5>=4 ? true : false );
-        int i=1;
-        int j=6;
-        int y=i>j ? 7:9;
+        assertTrue(5 >= 4 ? true : false);
+        int i = 1;
+        int j = 6;
+        int y = i > j ? 7 : 9;
         System.out.println(y);
     }
+
     @Test
-    public void bitwiseOperatorsExplored(){
+    public void bitwiseOperatorsExplored() {
         assertEquals(0b0001,
                 0b1001 & 0b0101);
         assertEquals(0b1101,
@@ -212,13 +215,15 @@ public class UserTest {
         assertEquals("11111111111111111111111111111110",
                 Integer.toBinaryString(~x));
     }
+
     @Test
-    public void bitwiseOperator(){
-    System.out.println(4 ^ 5);
+    public void bitwiseOperator() {
+        System.out.println(4 ^ 5);
         System.out.println(~4);
     }
+
     @Test
-    public void bitwiseAssignmentOperatorsExplored(){
+    public void bitwiseAssignmentOperatorsExplored() {
         byte x = 0b0001;
         x &= 0b1011;
         System.out.println(x);
@@ -228,13 +233,143 @@ public class UserTest {
         x ^= 0b1110;
         assertEquals(0b0111, x);
     }
+
     @Test
-    public void shiftoperator(){
+    public void shiftoperator() {
 
-       int x=Integer.MIN_VALUE;
-        System.out.println((x/2)+1);
-        System.out.println(x>>>2);
+        int x = Integer.MIN_VALUE;
+        System.out.println((x / 2) + 1);
+        System.out.println(x >>> 2);
 
+    }
+
+    @Test
+    public void someStringMethods() {
+        String aString = "abcdef";
+        assertEquals(6, aString.length());
+        assertTrue(aString.compareToIgnoreCase("ABCDEF") == 0);
+        assertTrue(aString.contains("bcde"));
+        assertTrue(aString.startsWith("abc"));
+// string indexing starts at 0
+        assertEquals('c', aString.charAt(2));
+        assertEquals("ef", aString.substring(4));
+    }
+
+    @Test
+    public void moreTernary() {
+        String url = "http://eviltester.com";
+
+        url = url.startsWith("http") ? url : addHttp(url);
+    }
+
+    private String addHttp(String url) {
+        return "http://" + url;
+    }
+
+    @Test
+    public void catTest() {
+        int number_of_cats = 1;
+        assertEquals("1==cat", "cat", (number_of_cats == 1) ? "cat" : "cats");
+    }
+
+    @Test
+    public void ifstatementTest() {
+        int i = 5;
+        if (i >= 1) {
+            ++i;
+            System.out.println(++i);
+        }
+        assertEquals(7, i);
+    }
+
+    @Test
+    public void ifAddHttp() {
+        String url = "www.seleniumsimplified.com";
+        if (!url.startsWith("http")) {
+            url = addHttp(url);
+        }
+        assertTrue(url.startsWith("http://"));
+        assertEquals("http://www.seleniumsimplified.com", url);
+    }
+
+    @Test
+    public void truthyIf() {
+        boolean truthy = true;
+
+        if (truthy)
+            assertTrue(truthy);
+
+        if (truthy) {
+            assertTrue(truthy);
+            assertFalse(!truthy);
+        }
+    }
+    @Test
+    public void switchExample(){
+        assertEquals("M", likelyGenderIs("sir"));
+        assertEquals("M", likelyGenderIs("mr"));
+        assertEquals("M", likelyGenderIs("master"));
+        assertEquals("F", likelyGenderIs("miss"));
+        assertEquals("F", likelyGenderIs("mrs"));
+        assertEquals("F", likelyGenderIs("ms"));
+        assertEquals("F", likelyGenderIs("lady"));
+        assertEquals("F", likelyGenderIs("madam"));
+    }
+    public String likelyGenderIs(String title){
+        String likelyGender;
+        switch(title.toLowerCase()){
+            case "sir":
+                likelyGender = "M";
+                break;
+            case "mr":
+                likelyGender = "M";
+                break;
+            case "master":
+                likelyGender = "M";
+                break;
+            default:
+                likelyGender = "F";
+                break;
+        }
+        return likelyGender;
+    }
+    @Test
+    public void countrySwitch(){
+
+        assertEquals("United Kingdom", countryOf("UK"));
+        assertEquals("United States", countryOf("US"));
+        assertEquals("United States", countryOf("USA"));
+        assertEquals("United States", countryOf("UsA"));
+        assertEquals("France", countryOf("FR"));
+        assertEquals("Sweden", countryOf("sE"));
+        assertEquals("Rest Of World", countryOf("ES"));
+        assertEquals("Rest Of World", countryOf("CH"));
+    }
+
+    private String countryOf(String shortCode) {
+
+        String country;
+
+        switch(shortCode.toUpperCase()){
+            case "UK":
+                country= "United Kingdom";
+                break;
+            case "US":
+            case "USA":
+                country = "United States";
+                break;
+            case "FR":
+                country = "France";
+                break;
+            case "SE":
+                country = "Sweden";
+                break;
+            default:
+                country = "Rest Of World";
+                break;
+        }
+
+        return country;
     }
 }
 
