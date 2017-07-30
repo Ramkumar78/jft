@@ -137,7 +137,7 @@ public class UserTest {
         assertEquals(1, 9 % 2);
     }
 
-    @Test
+
     @Test
     public void assignmentOperatorsExplored() {
         String ab = "ab";
@@ -166,4 +166,75 @@ public class UserTest {
         assertEquals(11, num--);
         assertEquals(10, num);
     }
+    @Test
+    public void booleanOperatorsExplored(){
+        assertTrue( 4 == 4 );
+        assertTrue(4 != 5);
+        assertTrue(3 < 4);
+        assertTrue(5 > 4);
+        assertTrue( 6 >= 6);
+        assertTrue( 7 >= 6);
+        assertTrue( 8 <= 8);
+        assertTrue( 8 <= 9);
+        assertFalse(!true);
+        boolean truthy = true;
+        assertFalse(!truthy);
+    }
+
+    @Test
+    public void conditionalOperatorsExplored(){
+        assertTrue( true && true);
+        assertTrue( true || false);
+        assertTrue( false || true);
+        assertFalse( false || false);
+        assertFalse( false && true);
+    }
+    @Test
+    public void ternaryOperatorsExplored(){
+        int x;
+        x = 4>3 ? 2 : 1;
+        assertEquals(2, x);
+        assertTrue( 5>=4 ? true : false );
+        int i=1;
+        int j=6;
+        int y=i>j ? 7:9;
+        System.out.println(y);
+    }
+    @Test
+    public void bitwiseOperatorsExplored(){
+        assertEquals(0b0001,
+                0b1001 & 0b0101);
+        assertEquals(0b1101,
+                0b1001 | 0b1001);
+        assertEquals(0b1100,
+                0b1001 ^ 0b0101);
+        int x = 0b0001;
+        assertEquals("11111111111111111111111111111110",
+                Integer.toBinaryString(~x));
+    }
+    @Test
+    public void bitwiseOperator(){
+    System.out.println(4 ^ 5);
+        System.out.println(~4);
+    }
+    @Test
+    public void bitwiseAssignmentOperatorsExplored(){
+        byte x = 0b0001;
+        x &= 0b1011;
+        System.out.println(x);
+        assertEquals(0b0001, x);
+        x |= 0b1001;
+        assertEquals(0b1001, x);
+        x ^= 0b1110;
+        assertEquals(0b0111, x);
+    }
+    @Test
+    public void shiftoperator(){
+
+       int x=Integer.MIN_VALUE;
+        System.out.println((x/2)+1);
+        System.out.println(x>>>2);
+
+    }
 }
+
