@@ -101,4 +101,29 @@ public class UserTest {
         aLongHas8Bytes = 9_000_000_000L; // 9 000 million
         assertEquals(9000000000L, aLongHas8Bytes);
     }
+
+    @Test
+    public void FloatingPointType() {
+        float singlePrecision32bit;
+        double doublePrecision64bit;
+        System.out.println("* `float` range: " +
+                Float.MIN_VALUE + " to " +
+                Float.MAX_VALUE);
+        System.out.println("* `double` range: " +
+                Double.MIN_VALUE + " to " +
+                Double.MAX_VALUE);
+        singlePrecision32bit = 10.0F; // suffix F to get a float`
+        assertEquals(10F, singlePrecision32bit, 0);
+        doublePrecision64bit = 20.0; // default to double
+        assertEquals(20D, doublePrecision64bit, 0);
+        char b = 'c';
+        System.out.println("---" + b);
+
+    }
+
+    @Test
+    public void CharacterType() {
+        char aChar = '\u0026';
+        assertEquals(aChar, '&');
+    }
 }
