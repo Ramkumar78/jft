@@ -282,5 +282,94 @@ public class UserTest {
         assertEquals(7, i);
     }
 
+    @Test
+    public void ifAddHttp() {
+        String url = "www.seleniumsimplified.com";
+        if (!url.startsWith("http")) {
+            url = addHttp(url);
+        }
+        assertTrue(url.startsWith("http://"));
+        assertEquals("http://www.seleniumsimplified.com", url);
+    }
+
+    @Test
+    public void truthyIf() {
+        boolean truthy = true;
+
+        if (truthy)
+            assertTrue(truthy);
+
+        if (truthy) {
+            assertTrue(truthy);
+            assertFalse(!truthy);
+        }
+    }
+    @Test
+    public void switchExample(){
+        assertEquals("M", likelyGenderIs("sir"));
+        assertEquals("M", likelyGenderIs("mr"));
+        assertEquals("M", likelyGenderIs("master"));
+        assertEquals("F", likelyGenderIs("miss"));
+        assertEquals("F", likelyGenderIs("mrs"));
+        assertEquals("F", likelyGenderIs("ms"));
+        assertEquals("F", likelyGenderIs("lady"));
+        assertEquals("F", likelyGenderIs("madam"));
+    }
+    public String likelyGenderIs(String title){
+        String likelyGender;
+        switch(title.toLowerCase()){
+            case "sir":
+                likelyGender = "M";
+                break;
+            case "mr":
+                likelyGender = "M";
+                break;
+            case "master":
+                likelyGender = "M";
+                break;
+            default:
+                likelyGender = "F";
+                break;
+        }
+        return likelyGender;
+    }
+    @Test
+    public void countrySwitch(){
+
+        assertEquals("United Kingdom", countryOf("UK"));
+        assertEquals("United States", countryOf("US"));
+        assertEquals("United States", countryOf("USA"));
+        assertEquals("United States", countryOf("UsA"));
+        assertEquals("France", countryOf("FR"));
+        assertEquals("Sweden", countryOf("sE"));
+        assertEquals("Rest Of World", countryOf("ES"));
+        assertEquals("Rest Of World", countryOf("CH"));
+    }
+
+    private String countryOf(String shortCode) {
+
+        String country;
+
+        switch(shortCode.toUpperCase()){
+            case "UK":
+                country= "United Kingdom";
+                break;
+            case "US":
+            case "USA":
+                country = "United States";
+                break;
+            case "FR":
+                country = "France";
+                break;
+            case "SE":
+                country = "Sweden";
+                break;
+            default:
+                country = "Rest Of World";
+                break;
+        }
+
+        return country;
+    }
 }
 
