@@ -4,6 +4,10 @@ import com.jft.domainentities.User;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -304,8 +308,9 @@ public class UserTest {
             assertFalse(!truthy);
         }
     }
+
     @Test
-    public void switchExample(){
+    public void switchExample() {
         assertEquals("M", likelyGenderIs("sir"));
         assertEquals("M", likelyGenderIs("mr"));
         assertEquals("M", likelyGenderIs("master"));
@@ -315,9 +320,10 @@ public class UserTest {
         assertEquals("F", likelyGenderIs("lady"));
         assertEquals("F", likelyGenderIs("madam"));
     }
-    public String likelyGenderIs(String title){
+
+    public String likelyGenderIs(String title) {
         String likelyGender;
-        switch(title.toLowerCase()){
+        switch (title.toLowerCase()) {
             case "sir":
                 likelyGender = "M";
                 break;
@@ -333,8 +339,9 @@ public class UserTest {
         }
         return likelyGender;
     }
+
     @Test
-    public void countrySwitch(){
+    public void countrySwitch() {
 
         assertEquals("United Kingdom", countryOf("UK"));
         assertEquals("United States", countryOf("US"));
@@ -350,9 +357,9 @@ public class UserTest {
 
         String country;
 
-        switch(shortCode.toUpperCase()){
+        switch (shortCode.toUpperCase()) {
             case "UK":
-                country= "United Kingdom";
+                country = "United Kingdom";
                 break;
             case "US":
             case "USA":
@@ -370,6 +377,52 @@ public class UserTest {
         }
 
         return country;
+    }
+
+    @Test
+    public void simpleDynamicCollectionExample() {
+        List<String> numbers0123 = new ArrayList<String>();
+        numbers0123.add("zero");
+        numbers0123.add("one");
+        numbers0123.add("two");
+        numbers0123.add("three");
+        for (String numberText : numbers0123)
+        // for(int i=0;i<numbers0123.size();i++)
+        {
+            System.out.println(numberText);
+        }
+        String[] someDays = {"Tuesday", "Thursday",
+                "Wednesday", "Monday",
+                "Saturday", "Sunday",
+                "Friday"};
+        List<String> days = Arrays.asList(someDays);
+
+        int forCount = 0;
+        for (String day : days) {
+            if (day.equals("Monday")) {
+                break;
+            }
+            forCount++;
+        }            System.out.println(forCount);
+
+
+    }
+
+
+    @Test
+    public void throwANullPointerException (){
+        Integer age=null;
+        String ageAsString;
+        try{
+            ageAsString = age.toString();
+        }catch(NullPointerException e){
+            age = 18;
+            ageAsString = age.toString();
+        }
+
+        String yourAge =
+                "You are " + ageAsString + " years old";
+        assertEquals("You are 18 years old", yourAge);
     }
 }
 
